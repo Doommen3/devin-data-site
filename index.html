@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devin Oommen — Data Analyst for Hire</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ee;
+    --accent: #c44b2b;
+    --accent-light: #e8d5c4;
+    --muted: #7a7468;
+    --rule: #d4cfc6;
+    --card-bg: #fffdf9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+  }
+  nav .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--ink); }
+
+  /* --- HERO --- */
+  .hero {
+    padding: 10rem 2rem 6rem;
+    max-width: 820px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero .eyebrow {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+  .hero p {
+    font-size: 1.15rem; color: var(--muted);
+    max-width: 600px; margin-bottom: 2.5rem;
+  }
+  .hero .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.85rem 2rem;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.03em; border-radius: 4px;
+    text-decoration: none; transition: all 0.25s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: #a63e23; }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  /* --- PROOF BAR --- */
+  .proof-bar {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 2.5rem 2rem;
+    display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .proof-item { text-align: center; }
+  .proof-item .number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--accent);
+  }
+  .proof-item .label {
+    font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); margin-top: 0.25rem;
+  }
+
+  /* --- SECTIONS --- */
+  section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  section .section-sub {
+    color: var(--muted); font-size: 1.05rem;
+    margin-bottom: 3rem; max-width: 560px;
+  }
+
+  /* --- SERVICES GRID --- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 2rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  .service-card .icon {
+    width: 40px; height: 40px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; margin-bottom: 1.25rem;
+  }
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem; margin-bottom: 0.5rem;
+  }
+  .service-card p {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* --- WORK / CASE STUDIES --- */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .work-card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--card-bg);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  }
+  .work-card .tag-bar {
+    padding: 1rem 1.5rem 0;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); background: var(--accent-light);
+    padding: 0.25rem 0.65rem; border-radius: 3px;
+  }
+  .work-card .body {
+    padding: 1rem 1.5rem 1.75rem;
+  }
+  .work-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem; margin-bottom: 0.5rem;
+  }
+  .work-card p {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+  }
+  .work-card .result {
+    margin-top: 0.75rem;
+    font-size: 0.85rem; font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* --- ABOUT --- */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .about-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
+  .tools-list {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+  }
+  .tool-tag {
+    font-size: 0.78rem; font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    color: var(--muted);
+  }
+
+  /* --- CTA --- */
+  .cta-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; margin-bottom: 1rem;
+  }
+  .cta-section p {
+    color: var(--muted); font-size: 1.05rem;
+    max-width: 480px; margin: 0 auto 2rem;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 700px) {
+    nav ul { gap: 1.2rem; }
+    .proof-bar { gap: 2rem; }
+    .about-content { grid-template-columns: 1fr; }
+    section { padding: 3.5rem 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    nav { padding: 0.85rem 1.25rem; }
+    nav ul { display: none; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">devin<span>.</span>data</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Data Analysis &amp; Consulting — Chicago, IL</div>
+  <h1>Your data is an asset.<br>Let's make it act like one.</h1>
+  <p>I help small businesses and political campaigns turn messy spreadsheets, scattered reports, and untapped data into clear dashboards, automated workflows, and actionable strategy.</p>
+  <div class="cta-row">
+    <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
+    <a href="#work" class="btn btn-outline">See Past Work</a>
+  </div>
+</div>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="number">600k+</div>
+    <div class="label">Rows Analyzed</div>
+  </div>
+  <div class="proof-item">
+    <div class="number">100+</div>
+    <div class="label">Documents Scraped</div>
+  </div>
+  <div class="proof-item">
+    <div class="number">40k</div>
+    <div class="label">Votes Supported</div>
+  </div>
+  <div class="proof-item">
+    <div class="number">155%</div>
+    <div class="label">Traffic Increase</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2>What I do</h2>
+  <p class="section-sub">Four core services, all built around the same idea: your data should be working for you, not the other way around.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon">📊</div>
+      <h3>Dashboards &amp; Reporting</h3>
+      <p>Replace the weekly scramble of pulling numbers from five different places. I build clean, automated dashboards and reports that update themselves — so you always know where things stand.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">🧹</div>
+      <h3>Data Cleaning &amp; Analysis</h3>
+      <p>Got years of messy spreadsheets, duplicate records, or data you've never been able to make sense of? I'll clean it, structure it, and surface the patterns that matter for your decisions.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">🔍</div>
+      <h3>Web Scraping &amp; Data Collection</h3>
+      <p>The information you need often exists online — in PDFs, government sites, or competitor pages — but there's no download button. I build custom scrapers that collect and structure it for you automatically.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">🗳️</div>
+      <h3>Political Data &amp; Voter Targeting</h3>
+      <p>Voter file analysis, precinct-level targeting, historical performance modeling, and field strategy recommendations. Data-driven campaigns win — I help you build the infrastructure for it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="border-top: 1px solid var(--rule);">
+  <h2>Selected work</h2>
+  <p class="section-sub">A few examples of real projects and their outcomes.</p>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Political Data</span></div>
+      <div class="body">
+        <h3>Voter File Targeting — COD Board Campaign</h3>
+        <p>Analyzed a 600,000-row Illinois voter file to compute precinct-level deviation from Democratic baseline. Built field targeting recommendations from the findings.</p>
+        <div class="result">→ Campaign earned 40,000+ votes</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Reporting Automation</span></div>
+      <div class="body">
+        <h3>Daily Operating Reports — Healthcare Org</h3>
+        <p>Built Excel/VBA automations and R-based reporting infrastructure to replace manual daily report prep. Created dashboards to expand data access across the organization.</p>
+        <div class="result">→ Hours of manual work eliminated weekly</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Web Scraping</span></div>
+      <div class="body">
+        <h3>Election Data Pipeline — University Research</h3>
+        <p>Scraped and standardized presidential primary election data from 100+ state-party PDF documents into a single, clean, reproducible dataset for ongoing academic research.</p>
+        <div class="result">→ 100+ PDFs → 1 clean dataset</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Data Journalism</span></div>
+      <div class="body">
+        <h3>Crime Data Scraper &amp; Interactive Map</h3>
+        <p>Built a Python scraper to extract data from 250 PDF crime logs, then analyzed and visualized findings in an interactive R-based map for a university newsroom.</p>
+        <div class="result">→ 155% increase in daily page views</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="border-top: 1px solid var(--rule);">
+  <h2>About</h2>
+  <div class="about-content">
+    <div>
+      <p>I'm Devin Oommen — a data analyst based in the Chicago area. I graduated from Northern Illinois University in 2025 with honors in Political Science and a concentration in data science, including coursework in econometrics and computational statistics.</p>
+      <p>My background spans political data, academic research, journalism, and business analytics. I've worked with 600k-row voter files, built scraping pipelines for university researchers, automated reporting for a healthcare organization, and used data to drive investigative journalism that won state-level awards.</p>
+      <p>I'm especially interested in working with small businesses that know they're sitting on useful data but don't have the time or tools to do anything with it — and with political campaigns and organizations that want to make sharper, evidence-based decisions.</p>
+    </div>
+    <div>
+      <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Tools &amp; Technologies</div>
+      <div class="tools-list">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">R</span>
+        <span class="tool-tag">SQL</span>
+        <span class="tool-tag">Tableau</span>
+        <span class="tool-tag">Excel / VBA</span>
+        <span class="tool-tag">Git / GitHub</span>
+        <span class="tool-tag">Web Scraping</span>
+        <span class="tool-tag">Regression</span>
+        <span class="tool-tag">R Shiny</span>
+        <span class="tool-tag">REST APIs</span>
+      </div>
+      <div style="margin-top:2rem;">
+        <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Recognition</div>
+        <p style="font-size:0.88rem; color:var(--muted);">MPSA Conference Presenter · ICPA News Story of the Year · ICCJA Reporter of the Year · Peters Scholarship for Public Service · Mortar Board Honor Society</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <h2>Let's talk about your data.</h2>
+  <p>Free 15-minute consultation. No pitch, no pressure — just an honest look at whether I can help.</p>
+  <a href="mailto:devin.oommen@email.com" class="btn btn-primary">Email Me</a>
+  <div style="margin-top:1rem;">
+    <a href="https://linkedin.com/in/devinoommen" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">LinkedIn ↗</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="https://github.com/Doommen3" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">GitHub ↗</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 Devin Oommen · Chicago, IL · <a href="mailto:devin.oommen@email.com">devin.oommen@email.com</a>
+</footer>
+
+</body>
+</html>
