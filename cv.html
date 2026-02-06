@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Devin Oommen</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ee;
+    --accent: #c44b2b;
+    --accent-light: #e8d5c4;
+    --muted: #7a7468;
+    --rule: #d4cfc6;
+    --card-bg: #fffdf9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  nav .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    text-decoration: none; color: var(--ink);
+  }
+  nav .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--ink); }
+
+  /* --- HEADER --- */
+  .cv-header {
+    padding: 9rem 2rem 3.5rem;
+    max-width: 820px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cv-header .eyebrow {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .cv-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+  .cv-header .contact-row {
+    display: flex; flex-wrap: wrap; gap: 1.25rem;
+    font-size: 0.9rem; color: var(--muted);
+  }
+  .cv-header .contact-row a {
+    color: var(--accent); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .cv-header .contact-row a:hover { color: #a63e23; }
+  .cv-header .contact-row .sep { color: var(--rule); }
+
+  /* --- CV LAYOUT --- */
+  .cv-body {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+  }
+
+  .cv-section {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    animation: fadeUp 0.6s ease both;
+  }
+  .cv-section:nth-child(2) { animation-delay: 0.05s; }
+  .cv-section:nth-child(3) { animation-delay: 0.1s; }
+  .cv-section:nth-child(4) { animation-delay: 0.15s; }
+  .cv-section:nth-child(5) { animation-delay: 0.2s; }
+  .cv-section:nth-child(6) { animation-delay: 0.25s; }
+  .cv-section:nth-child(7) { animation-delay: 0.3s; }
+  .cv-section:nth-child(8) { animation-delay: 0.35s; }
+
+  .cv-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem; letter-spacing: -0.02em;
+    margin-bottom: 1.75rem;
+    color: var(--ink);
+  }
+
+  /* --- ENTRY (job, education, etc.) --- */
+  .cv-entry {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .cv-entry:last-child { margin-bottom: 0; }
+
+  .cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+  .cv-entry-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .cv-entry-header .date {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .cv-entry .subtitle {
+    font-size: 0.88rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .cv-entry ul {
+    list-style: none;
+    padding: 0;
+  }
+  .cv-entry ul li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 1.1rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+  .cv-entry ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .cv-entry p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* --- SKILLS GRID --- */
+  .skills-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .skill-col h4 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 0.45rem;
+  }
+  .skill-tag {
+    font-size: 0.78rem; font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    color: var(--muted);
+    background: var(--card-bg);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--ink);
+  }
+
+  /* --- AWARDS LIST --- */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .award-item {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.15rem 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .award-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  }
+  .award-item .award-year {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .award-item .award-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* --- PRESENTATIONS --- */
+  .presentation-entry {
+    margin-bottom: 1.75rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent-light);
+  }
+  .presentation-entry:last-child { margin-bottom: 0; }
+  .presentation-entry h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .presentation-entry .venue {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .presentation-entry p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* --- EXTRAS --- */
+  .extras-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .extra-tag {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    color: var(--muted);
+    background: var(--card-bg);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 700px) {
+    nav ul { gap: 1.2rem; }
+    .skills-two-col { grid-template-columns: 1fr; }
+    .awards-grid { grid-template-columns: 1fr; }
+    .cv-entry-header { flex-direction: column; gap: 0.15rem; }
+  }
+  @media (max-width: 480px) {
+    nav { padding: 0.85rem 1.25rem; }
+    nav ul { display: none; }
+    .cv-header { padding: 7rem 1.25rem 2.5rem; }
+    .cv-body { padding: 0 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Devin <span></span>Oommen</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="#" style="color:var(--ink);">CV</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<div class="cv-header">
+  <div class="eyebrow">Curriculum Vitae</div>
+  <h1>Devin Oommen</h1>
+  <div class="contact-row">
+    <span>Chicago, IL</span>
+    <span class="sep">·</span>
+    <a href="mailto:devin.oommen@gmail.com">devin.oommen@gmail.com</a>
+    <span class="sep">·</span>
+    <span>630-456-6784</span>
+    <span class="sep">·</span>
+    <a href="https://linkedin.com/in/devinoommen">LinkedIn ↗</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/Doommen3">GitHub ↗</a>
+  </div>
+</div>
+
+<div class="cv-body">
+
+  <!-- SKILLS -->
+  <div class="cv-section">
+    <h2>Tools &amp; Skills</h2>
+    <div class="skills-two-col">
+      <div class="skill-col">
+        <h4>Tools &amp; Languages</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Excel / VBA</span>
+          <span class="skill-tag">R Shiny</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">tidyverse</span>
+          <span class="skill-tag">ggplot2</span>
+          <span class="skill-tag">BeautifulSoup</span>
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h4>Methods &amp; Techniques</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Regression &amp; Classification</span>
+          <span class="skill-tag">OLS / GLM (robust SEs)</span>
+          <span class="skill-tag">Econometrics</span>
+          <span class="skill-tag">Causal Inference</span>
+          <span class="skill-tag">Monte Carlo Simulation</span>
+          <span class="skill-tag">ANOVA</span>
+          <span class="skill-tag">Power Analysis / CUPED</span>
+          <span class="skill-tag">Data Wrangling &amp; ETL</span>
+          <span class="skill-tag">Web Scraping</span>
+          <span class="skill-tag">Geographic Visualization</span>
+          <span class="skill-tag">Log-Linear Models</span>
+          <span class="skill-tag">Interaction Effects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="cv-section">
+    <h2>Work Experience</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Revolution New Medicine</h3>
+        <span class="date">Sept 2025 – Dec 2025</span>
+      </div>
+      <div class="subtitle">Operations Systems Analyst</div>
+      <ul>
+        <li>Primary technical owner for business-critical reporting, scheduling support, and closeout processes — balancing frontline operations with backend systems engineering.</li>
+        <li>Built and maintained Excel/VBA automations that standardized daily operating reports, improved data integrity, and reduced manual prep time through repeatable, button-driven workflows.</li>
+        <li>Coded in R to build automated reporting infrastructure; developed dashboards to expand access to data and analytics across the organization.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Shaw Local — The Daily Chronicle</h3>
+        <span class="date">July 2025 – Present</span>
+      </div>
+      <div class="subtitle">Freelance News Reporter</div>
+      <ul>
+        <li>Produce news content on deadline; pitch enterprise stories aligned to editorial goals.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Northern Star (NIU)</h3>
+        <span class="date">Jan 2025 – May 2025</span>
+      </div>
+      <div class="subtitle">News Editor</div>
+      <ul>
+        <li>Achieved 155% increase in average daily page views over four months; monthly unique users reached 46k.</li>
+        <li>Built a 250-PDF crime-log scraper in Python; integrated R analysis into an interactive crime map.</li>
+        <li>Investigated fire code violations using FOIA requests; documented 15 months of administrative delays preceding a fire that displaced 60 residents.</li>
+        <li>Analyzed user behavior; collaborated with editorial, design, and IT teams.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Northern Star (NIU)</h3>
+        <span class="date">Aug 2023 – Dec 2024</span>
+      </div>
+      <div class="subtitle">News Reporter</div>
+      <ul>
+        <li>Covered every city council meeting over six months; 1,000–3,000 views per article.</li>
+        <li>Reported on university policy and campus events with interviews and data analysis.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Haroon Atcha for COD Board Campaign</h3>
+        <span class="date">Dec 2022 – May 2023</span>
+      </div>
+      <div class="subtitle">Data Analyst</div>
+      <ul>
+        <li>Analyzed a 600,000-row Illinois voter file to compute precinct-level deviation from historical Democratic baseline.</li>
+        <li>Identified statistically significant underperformance in target precincts; built field recommendations and targeting strategy.</li>
+        <li>Supported campaign that received 40,000+ votes in community college board election.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Evolve Fitness &amp; Training</h3>
+        <span class="date">Oct 2023 – July 2025</span>
+      </div>
+      <div class="subtitle">Personal Trainer</div>
+      <ul>
+        <li>Led 1–3 group classes weekly; coached safe movement and positive member experience.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>COD Courier</h3>
+        <span class="date">Aug 2021 – May 2023</span>
+      </div>
+      <div class="subtitle">News Reporter</div>
+      <ul>
+        <li>Reported on Board of Trustees meetings and campus events; maintained student newspaper website.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Unify One Solutions</h3>
+        <span class="date">Aug 2019 – May 2020</span>
+      </div>
+      <div class="subtitle">Software Consultant</div>
+      <ul>
+        <li>Implemented rigorous testing protocols; identified 15+ critical bugs prior to release.</li>
+        <li>Automated regression tests; uncovered 127 UI defects, accelerating release cycles.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Additional Experience</h3>
+        <span class="date">2009 – 2018</span>
+      </div>
+      <p>Amazon — Fulfillment Center Associate (2017–2018) · XSport Fitness — Porter (2016–2017) · Best Buy — Sales/Cashier (2009–2010, 2013–2014) · Menards — Cashier (2010) · Codilis &amp; Associates — Legal Assistant (2012–2013) · Loyola University — Student (2014–2015)</p>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="cv-section">
+    <h2>Education</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Northern Illinois University</h3>
+        <span class="date">2025</span>
+      </div>
+      <div class="subtitle">B.S. Political Science (Honors), Data Science Minor (Equivalent)</div>
+      <ul>
+        <li>Associate University Honors; Mortar Board Honor Society</li>
+        <li>Coursework: Econometrics, Computational Statistics, International Political Economy, Politics of Developing Areas</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>College of DuPage</h3>
+        <span class="date">2023</span>
+      </div>
+      <div class="subtitle">A.A. Liberal Arts (Honors)</div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>College of DuPage</h3>
+        <span class="date">2022</span>
+      </div>
+      <div class="subtitle">Python Proficiency Coding Certificate (Honors)</div>
+    </div>
+  </div>
+
+  <!-- PRESENTATIONS & RESEARCH -->
+  <div class="cv-section">
+    <h2>Presentations &amp; Research</h2>
+
+    <div class="presentation-entry">
+      <h3>Determinants of Household Electrification — A Cross-Sectional Analysis of Socioeconomic &amp; Gender Inequities in India</h3>
+      <div class="venue">Midwest Political Science Association (MPSA) · 2025</div>
+      <p>Statistical analysis using SHRUG dataset (600k rows) examining links between electrification and household welfare in rural India. Built multiple linear regression models with interaction terms; identified a positive effect of domestic electricity access (~1.6–3.2% increase in estimated monthly consumption per capita).</p>
+    </div>
+
+    <div class="presentation-entry">
+      <h3>Do Voters in Community College Board of Trustees Elections Vote Along Party Lines?</h3>
+      <div class="venue">College of DuPage Research Symposium · 2023</div>
+      <p>Analyzed ISBE campaign finance and election data; found correlation between fundraising and voter turnout. Examined demographic and party affiliation data to uncover trends in candidate success and representation.</p>
+    </div>
+
+    <div class="presentation-entry">
+      <h3>Data Privacy &amp; Data Regulations as a Function of Hegemonic Power</h3>
+      <div class="venue">College of DuPage Library Research Symposium · 2021</div>
+      <p>Linked data regulatory regimes to global power structures; examined how hegemonic states shape international data governance frameworks.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="cv-section">
+    <h2>Technical Projects</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Monthly Crime-Log ETL Pipeline</h3>
+        <span class="date">Northern Star</span>
+      </div>
+      <ul>
+        <li>Python script to monthly scrape new PDF crime logs and normalize schema.</li>
+        <li>Leaflet/Google Maps visualization; R Shiny app to plot incidents on an interactive map.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Congressional Bill Tracker</h3>
+      </div>
+      <ul>
+        <li>Built web application using Congress API to track bills sponsored/cosponsored by each member of Congress.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Illinois News Publishing Cadence Tracker</h3>
+        <span class="date">In Development</span>
+      </div>
+      <ul>
+        <li>Building application to track news publishing frequency across Illinois counties; monitoring local news coverage gaps.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Monte Carlo Simulation Study — ANOVA Robustness</h3>
+      </div>
+      <ul>
+        <li>Designed Monte Carlo simulation (n=700 iterations) in R to evaluate ANOVA robustness under varying effect sizes and error distributions.</li>
+        <li>Analyzed Type I error rates and statistical power across normal and non-normal (exponential) error conditions.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Presidential Election Data Pipeline</h3>
+        <span class="date">Research Assistant</span>
+      </div>
+      <ul>
+        <li>Scraped and standardized presidential primary election data from 100+ state-party PDF documents.</li>
+        <li>Built reproducible data pipeline for professor's ongoing research.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <h3>Board of Trustees Meeting Minutes Scraper</h3>
+        <span class="date">Research Assistant — College of DuPage</span>
+      </div>
+      <ul>
+        <li>Scraped and parsed board of trustees meeting minutes to extract structured data for faculty research project.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="cv-section">
+    <h2>Awards &amp; Recognition</h2>
+    <div class="awards-grid">
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div class="award-name">John G. &amp; Barbara C. Peters Scholarship for Outstanding Public Service</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div class="award-name">Jim Killam Mentor Award</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2025</div>
+        <div class="award-name">Roy G. Campbell "Best Damn Reporter" Award</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2024</div>
+        <div class="award-name">ICPA News Story of the Year — Honorable Mention</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2023</div>
+        <div class="award-name">ICCJA Reporter of the Year — 1st Place</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2021</div>
+        <div class="award-name">COD Library Research Symposium — Honorable Mention</div>
+      </div>
+      <div class="award-item">
+        <div class="award-year">2021</div>
+        <div class="award-name">Academic Excellence — COD Political Science</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTRACURRICULARS -->
+  <div class="cv-section">
+    <h2>Extracurriculars &amp; Volunteer</h2>
+    <div class="extras-list">
+      <span class="extra-tag">Democratic National Convention — Volunteer (2024)</span>
+      <span class="extra-tag">Associated Press — Election Stringer (2022)</span>
+      <span class="extra-tag">Economic Student Association (2024)</span>
+      <span class="extra-tag">MGSOSA — Senior Coordinator (2012–2014)</span>
+      <span class="extra-tag">St. George Jacobite Syrian Orthodox Church — Board of Trustees (2013–2014)</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Devin Oommen · Chicago, IL · <a href="mailto:devin.oommen@gmail.com">devin.oommen@gmail.com</a> · <a href="index.html">Back to Home</a>
+</footer>
+
+</body>
+</html>
