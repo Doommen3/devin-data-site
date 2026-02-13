@@ -76,6 +76,13 @@
     font-size: 1.15rem; color: var(--muted);
     max-width: 600px; margin-bottom: 2.5rem;
   }
+  .hero p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .hero p a:hover { border-bottom-color: var(--accent); }
   .hero .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn {
     display: inline-block; padding: 0.85rem 2rem;
@@ -194,6 +201,13 @@
     font-family: 'DM Serif Display', serif;
     font-size: 1.15rem; margin-bottom: 0.5rem;
   }
+  .work-card .project-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .work-card .project-link:hover { color: #a63e23; }
   .work-card p {
     font-size: 0.88rem; color: var(--muted); line-height: 1.6;
   }
@@ -278,34 +292,35 @@
 <div class="hero">
   <div class="eyebrow">Data Analysis &amp; Consulting — Chicago, IL</div>
   <h1>Your data is an asset.<br>Let's make it act like one.</h1>
-  <p>I help small businesses and political campaigns turn messy spreadsheets, scattered reports, and untapped data into clear dashboards, automated workflows, and actionable strategy.</p>
+  <p>I help small businesses and political campaigns turn messy spreadsheets, scattered reports, and untapped data into clear dashboards, automated workflows, and actionable strategy. Recent launch: <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">Follow The Money Illinois</a>, a public campaign-finance platform for Illinois state and federal reporting data.</p>
   <div class="cta-row">
     <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
     <a href="#work" class="btn btn-outline">See Past Work</a>
+    <a href="https://www.followthemoneyil.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View Follow The Money IL</a>
   </div>
 </div>
 
 <!-- PROOF BAR -->
 <div class="proof-bar">
   <div class="proof-item">
-    <div class="number">600k+</div>
-    <div class="label">Rows Analyzed</div>
+    <div class="number">6.4M+</div>
+    <div class="label">Receipts Rows Ingested</div>
   </div>
   <div class="proof-item">
-    <div class="number">100+</div>
-    <div class="label">Documents Scraped</div>
+    <div class="number">530k+</div>
+    <div class="label">D2 Totals Processed</div>
   </div>
   <div class="proof-item">
-    <div class="number">40k</div>
-    <div class="label">Votes Supported</div>
+    <div class="number">1.3M+</div>
+    <div class="label">Donor Analytics Rows</div>
   </div>
   <div class="proof-item">
-    <div class="number">155%</div>
-    <div class="label">Traffic Increase</div>
+    <div class="number">2</div>
+    <div class="label">State + Federal Data Sources</div>
   </div>
   <div class="proof-item">
-    <div class="number">484k</div>
-    <div class="label">Observations Modeled</div>
+    <div class="number">Live</div>
+    <div class="label">Production Scheduled Syncs</div>
   </div>
 </div>
 
@@ -347,6 +362,14 @@
   <h2>Selected work</h2>
   <p class="section-sub">A few examples of real projects and their outcomes.</p>
   <div class="work-grid">
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Campaign Finance Platform</span></div>
+      <div class="body">
+        <h3>Follow The Money Illinois &nbsp;<a class="project-link" href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">Live Site ↗</a></h3>
+        <p>Built a public campaign-finance platform that ingests Illinois state bulk filings + FEC federal data, powers searchable dashboards, and surfaces donor/network analytics.</p>
+        <div class="result">→ 6.4M+ receipts rows, 530k+ D2 totals, and 1.3M+ donor analytics rows; production deployment with scheduled syncs.</div>
+      </div>
+    </div>
     <div class="work-card">
       <div class="tag-bar"><span class="tag">Political Data</span></div>
       <div class="body">
@@ -411,12 +434,20 @@
       <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Tools &amp; Technologies</div>
       <div class="tools-list">
         <span class="tool-tag">Python</span>
+        <span class="tool-tag">Flask</span>
+        <span class="tool-tag">SQLite</span>
         <span class="tool-tag">R</span>
         <span class="tool-tag">SQL</span>
         <span class="tool-tag">Tableau</span>
         <span class="tool-tag">Excel / VBA</span>
         <span class="tool-tag">Git / GitHub</span>
-        <span class="tool-tag">Web Scraping</span>
+        <span class="tool-tag">Data Pipelines / ETL</span>
+        <span class="tool-tag">FEC / OpenFEC APIs</span>
+        <span class="tool-tag">Web Scraping (Playwright)</span>
+        <span class="tool-tag">Dashboard Development</span>
+        <span class="tool-tag">Data QA &amp; Reconciliation</span>
+        <span class="tool-tag">Linux / systemd</span>
+        <span class="tool-tag">pytest</span>
         <span class="tool-tag">Regression</span>
         <span class="tool-tag">R Shiny</span>
         <span class="tool-tag">REST APIs</span>
@@ -438,9 +469,9 @@
   <p>Free 15-minute consultation. No pitch, no pressure — just an honest look at whether I can help.</p>
   <a href="mailto:devin.oommen@gmail.com" class="btn btn-primary">Email Me</a>
   <div style="margin-top:1rem;">
-    <a href="https://linkedin.com/in/devinoommen" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">LinkedIn ↗</a>
+    <a href="https://linkedin.com/in/devinoommen" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">LinkedIn ↗</a>
     &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="https://github.com/Doommen3" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">GitHub ↗</a>
+    <a href="https://github.com/Doommen3" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">GitHub ↗</a>
   </div>
 </div>
 
