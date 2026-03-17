@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devin Oommen — Data Science &amp; Public-Interest Analytics</title>
+<title>Devin Oommen — Data Science, Statistical Modeling &amp; Real-Time ML Systems</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -297,9 +297,9 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="eyebrow">Data Science · Statistical Modeling · Public-Interest Analytics — Chicago, IL</div>
+  <div class="eyebrow">Data Science · Statistical Modeling · Real-Time ML Systems · Public-Interest Analytics — Chicago, IL</div>
   <h1>Your data is an asset.<br>Let's make it act like one.</h1>
-  <p>Applied data professional with verified coursework in computational statistics, econometrics, and discrete mathematics. I build public-interest data products and automated analytical tools in R, Python, and SQL — from campaign-finance platforms to interactive dashboards. Recent launch: <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">Follow The Money Illinois</a>, a public campaign-finance platform for Illinois state and federal reporting data.</p>
+  <p>Data scientist who builds end-to-end — from PDF scraping and ETL pipelines to deployed ML systems and production web applications. Graduate-level coursework in econometrics, computational statistics, and Bayesian reasoning. Ships real things: <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">6.4M-row campaign finance platform</a> in production, real-time Whisper-powered police scanner with async architecture, interactive crime mapping in a live newsroom, and an honors thesis analyzing 484K Indian villages.</p>
   <div class="cta-row">
     <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
     <a href="#work" class="btn btn-outline">See Past Work</a>
@@ -361,6 +361,11 @@
       <h3>Simulation &amp; Causal Inference</h3>
       <p>Need to know what's actually driving your results — not just what correlates? I build Monte Carlo simulations to stress-test assumptions and use causal inference methods to isolate real effects from noise, so you can make decisions based on evidence, not guesswork.</p>
     </div>
+    <div class="service-card">
+      <div class="icon">🎙️</div>
+      <h3>Real-Time ML &amp; NLP</h3>
+      <p>Live audio transcription, keyword detection, and alerting systems powered by Whisper speech-to-text with quantized inference, voice activity detection, and fuzzy text matching — fully async architectures built to run in production.</p>
+    </div>
   </div>
 </section>
 
@@ -369,6 +374,14 @@
   <h2>Selected work</h2>
   <p class="section-sub">A few examples of real projects and their outcomes.</p>
   <div class="work-grid">
+    <div class="work-card">
+      <div class="tag-bar"><span class="tag">Real-Time ML</span></div>
+      <div class="body">
+        <h3>DeKalb Scanner Alerts</h3>
+        <p>Real-time police scanner transcription and alerting system. Ingests live Broadcastify audio via FFmpeg, runs Whisper STT with Int8 quantization, detects critical keywords via Aho-Corasick + fuzzy matching, and pushes alerts via email/Slack/WebSocket dashboard. Fully async architecture packaged as a standalone macOS app.</p>
+        <div class="result">→ 14 modules, ~800 LOC, fully async architecture</div>
+      </div>
+    </div>
     <div class="work-card">
       <div class="tag-bar"><span class="tag">Campaign Finance Platform</span></div>
       <div class="body">
@@ -426,11 +439,11 @@
       </div>
     </div>
     <div class="work-card">
-      <div class="tag-bar"><span class="tag">Causal Inference</span></div>
+      <div class="tag-bar"><span class="tag">Honors Capstone</span></div>
       <div class="body">
         <h3>Electrification &amp; Welfare in Rural India</h3>
-        <p>Analyzed 484,630 village-level observations using log-linear regression with interaction terms to isolate the causal effect of electricity access on consumption, controlling for poverty and gender.</p>
-        <div class="result">→ Estimated 1.6–3.2% consumption increase from electrification</div>
+        <p>Cross-sectional analysis of 484,630 Indian villages (12 merged datasets). MLR testing domestic, commercial, and agricultural electrification effects on consumption. R² = 0.82. 11 academic citations (JPE, World Development, Energy Economics).</p>
+        <div class="result">→ Found 1.6% welfare increase from domestic electricity access</div>
       </div>
     </div>
   </div>
@@ -441,35 +454,46 @@
   <h2>About</h2>
   <div class="about-content">
     <div>
-      <p>I'm Devin Oommen — a data scientist based in the Chicago area. I graduated from Northern Illinois University in 2025 with honors in Political Science and a data science minor equivalent, including coursework in computational statistics (MLE, Bayesian inference, Monte Carlo simulation, regression), econometrics, and discrete mathematics.</p>
-      <p>My background spans political data, graduate-level quantitative research, journalism, and business analytics. I've conducted statistical analysis of 600k-row datasets with log-linear regression and interaction terms, built scraping pipelines for university researchers, automated reporting for a healthcare organization, and built full-stack dashboards with FastAPI, D3.js, and Chart.js.</p>
+      <p>I'm Devin Oommen — a data scientist based in the Chicago area. I graduated from Northern Illinois University in 2025 with honors in Political Science, with graduate-level coursework in econometrics (OLS, 2SLS/IV, causal inference), computational statistics (MLE, Monte Carlo, bootstrap, KDE), and Bayesian reasoning.</p>
+      <p>I build end-to-end — from PDF scraping and ETL pipelines to deployed ML systems and production web applications. Recent work includes a 6.4M-row campaign finance platform, a real-time Whisper-powered police scanner with fully async architecture, interactive crime mapping in a live newsroom, and an honors thesis analyzing 484K Indian villages.</p>
       <p>I'm especially interested in working with small businesses that know they're sitting on useful data but don't have the time or tools to do anything with it — and with political campaigns and organizations that want to make sharper, evidence-based decisions.</p>
     </div>
     <div>
       <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Tools &amp; Technologies</div>
       <div class="tools-list">
-        <span class="tool-tag">R</span>
         <span class="tool-tag">Python</span>
+        <span class="tool-tag">R</span>
         <span class="tool-tag">SQL</span>
+        <span class="tool-tag">JavaScript</span>
+        <span class="tool-tag">Bash</span>
         <span class="tool-tag">Pandas / NumPy / SciPy</span>
         <span class="tool-tag">Scikit-learn</span>
         <span class="tool-tag">Flask</span>
         <span class="tool-tag">FastAPI</span>
+        <span class="tool-tag">faster-whisper / WebRTC VAD</span>
+        <span class="tool-tag">asyncio / aiosqlite</span>
+        <span class="tool-tag">Pydantic / RapidFuzz</span>
         <span class="tool-tag">SQLite</span>
-        <span class="tool-tag">R Shiny</span>
+        <span class="tool-tag">R Shiny / Leaflet</span>
+        <span class="tool-tag">tidyverse / sf / ggplot2</span>
         <span class="tool-tag">D3.js / Chart.js</span>
         <span class="tool-tag">Tableau</span>
         <span class="tool-tag">Excel / VBA</span>
         <span class="tool-tag">Git / GitHub</span>
         <span class="tool-tag">Azure DevOps</span>
         <span class="tool-tag">Jupyter</span>
-        <span class="tool-tag">BeautifulSoup / Playwright</span>
+        <span class="tool-tag">Quarto / R Markdown / LaTeX</span>
+        <span class="tool-tag">BeautifulSoup / Playwright / Selenium</span>
+        <span class="tool-tag">pdfplumber / PDF Parsing</span>
+        <span class="tool-tag">FFmpeg / Real-Time Audio</span>
         <span class="tool-tag">Data Pipelines / ETL</span>
+        <span class="tool-tag">Geocoding / Google Maps API</span>
         <span class="tool-tag">FEC / OpenFEC APIs</span>
-        <span class="tool-tag">Regression &amp; Econometrics</span>
+        <span class="tool-tag">OLS / 2SLS/IV / Econometrics</span>
         <span class="tool-tag">MLE / Bayesian Inference</span>
-        <span class="tool-tag">Monte Carlo Simulation</span>
+        <span class="tool-tag">Monte Carlo / Bootstrap / KDE</span>
         <span class="tool-tag">Causal Inference</span>
+        <span class="tool-tag">Whisper STT / NLP Pipelines</span>
         <span class="tool-tag">Geospatial Visualization</span>
         <span class="tool-tag">Jira</span>
       </div>
