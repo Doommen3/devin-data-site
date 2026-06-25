@@ -1,0 +1,20 @@
+{
+  "name": "devin-data-site",
+  "version": "1.0.0",
+  "description": "Source for [devinoommen.com](https://devinoommen.com), the marketing site for **Oommen & Company** — Devin Oommen's independent data infrastructure, automation, and operations practice. The site presents the practice's services and selected results.",
+  "main": "index.js",
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": ["**/tests/**/*.test.js"]
+  },
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
