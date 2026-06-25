@@ -5,32 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CV — Devin Oommen | Data Science, Statistical Modeling, Real-Time ML Systems</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <style>
   :root {
     --ink: #1a1a1a;
-    --paper: #f6f3ee;
+    --bg: #f6f3ee;
     --accent: #c44b2b;
     --accent-light: #e8d5c4;
     --muted: #7a7468;
-    --rule: #d4cfc6;
-    --card-bg: #fffdf9;
+    --line: #d4cfc6;
+    --card: #fffdf9;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--bg);
     line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
   }
 
   /* --- NAV --- */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
+    position: fixed; top: 0; width: 100%;
+    background: var(--bg);
     padding: 1rem 2rem;
     display: flex; justify-content: space-between; align-items: center;
   }
@@ -38,17 +34,13 @@
     font-family: 'DM Serif Display', serif;
     font-size: 1.15rem;
     letter-spacing: -0.02em;
-    text-decoration: none; color: var(--ink);
   }
   nav .logo span { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul { gap: 2rem; }
   nav ul a {
-    text-decoration: none; color: var(--muted);
-    font-size: 0.85rem; font-weight: 500;
+    font-size: 0.85rem;
     letter-spacing: 0.04em; text-transform: uppercase;
-    transition: color 0.2s;
   }
-  nav ul a:hover { color: var(--ink); }
 
   /* --- HEADER --- */
   .cv-header {
@@ -57,10 +49,7 @@
     margin: 0 auto;
     animation: fadeUp 0.8s ease both;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+
   .cv-header .eyebrow {
     font-size: 0.8rem; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.12em;
@@ -82,7 +71,7 @@
     transition: color 0.2s;
   }
   .cv-header .contact-row a:hover { color: #a63e23; }
-  .cv-header .contact-row .sep { color: var(--rule); }
+  .cv-header .contact-row .sep { color: var(--line); }
 
   /* --- CV LAYOUT --- */
   .cv-body {
@@ -93,7 +82,7 @@
 
   .cv-section {
     padding: 2.5rem 0;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
     animation: fadeUp 0.6s ease both;
   }
   .cv-section:nth-child(2) { animation-delay: 0.05s; }
@@ -196,10 +185,10 @@
   .skill-tag {
     font-size: 0.78rem; font-weight: 500;
     padding: 0.3rem 0.75rem;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--line);
     border-radius: 3px;
     color: var(--muted);
-    background: var(--card-bg);
+    background: var(--card);
     transition: border-color 0.2s, color 0.2s;
   }
   .skill-tag:hover {
@@ -214,8 +203,8 @@
     gap: 1rem;
   }
   .award-item {
-    background: var(--card-bg);
-    border: 1px solid var(--rule);
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: 6px;
     padding: 1.15rem 1.25rem;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -272,21 +261,17 @@
   .extra-tag {
     font-size: 0.82rem;
     padding: 0.4rem 0.9rem;
-    border: 1px solid var(--rule);
+    border: 1px solid var(--line);
     border-radius: 20px;
     color: var(--muted);
-    background: var(--card-bg);
+    background: var(--card);
   }
 
   /* --- FOOTER --- */
   footer {
-    text-align: center;
-    padding: 2rem;
     font-size: 0.8rem;
-    color: var(--muted);
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
   }
-  footer a { color: var(--accent); text-decoration: none; }
 
   /* --- RESPONSIVE --- */
   @media (max-width: 700px) {
