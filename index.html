@@ -3,534 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devin Oommen — Data Science, Statistical Modeling &amp; Real-Time ML Systems</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Oommen & Company — Data Infrastructure, Automation & Operations</title>
+<meta name="description" content="Oommen & Company turns messy, manual business operations into software that runs itself — data infrastructure, automation, dashboards, and custom internal tools. Chicago / DuPage County, IL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1a1a;
-    --paper: #f6f3ee;
-    --accent: #c44b2b;
-    --accent-light: #e8d5c4;
-    --muted: #7a7468;
-    --rule: #d4cfc6;
-    --card-bg: #fffdf9;
+    --bg: #fbfaf8;
+    --card: #ffffff;
+    --ink: #111418;
+    --accent: #1f6f5c;
+    --accent-dark: #185845;
+    --accent-soft: #e7f0ec;
+    --sand: #ece7dd;
+    --muted: #6b7280;
+    --muted-soft: #9aa0a6;
+    --line: #e7e3da;
+    --shadow: 0 1px 2px rgba(17,20,24,.04), 0 12px 32px rgba(17,20,24,.05);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--paper);
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
     color: var(--ink);
-    line-height: 1.65;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  /* --- NAV --- */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; line-height: 1.1; }
+
+  a { color: inherit; }
+
+  .accent { color: var(--accent); }
+
+  /* ---------- NAV ---------- */
   nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule);
-    padding: 1rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(251,250,248,.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
   }
-  nav .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0.9rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  nav .logo span { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
+  .logo {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.18rem;
+    letter-spacing: -0.01em; text-decoration: none; color: var(--ink);
+  }
+  .logo .amp { color: var(--accent); }
+  .logo .co { color: var(--muted); font-weight: 500; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 1.9rem; }
   nav ul a {
-    text-decoration: none; color: var(--muted);
-    font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    transition: color 0.2s;
+    text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500;
+    transition: color .18s;
   }
   nav ul a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important; padding: 0.5rem 1.05rem;
+    border-radius: 8px; font-size: 0.85rem !important; font-weight: 600 !important;
+    transition: background .18s, transform .18s;
+  }
+  .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
 
-  /* --- HERO --- */
-  .hero {
-    padding: 10rem 2rem 6rem;
-    max-width: 820px;
-    margin: 0 auto;
-    animation: fadeUp 0.8s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero .eyebrow {
-    font-size: 0.8rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--accent); margin-bottom: 1.5rem;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    margin-bottom: 1.5rem;
-  }
-  .hero p {
-    font-size: 1.15rem; color: var(--muted);
-    max-width: 600px; margin-bottom: 2.5rem;
-  }
-  .hero p a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .hero p a:hover { border-bottom-color: var(--accent); }
-  .hero .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  /* ---------- BUTTONS ---------- */
   .btn {
-    display: inline-block; padding: 0.85rem 2rem;
-    font-size: 0.9rem; font-weight: 600;
-    letter-spacing: 0.03em; border-radius: 4px;
-    text-decoration: none; transition: all 0.25s;
-    cursor: pointer; border: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.5rem; border-radius: 9px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+    transition: all .2s;
   }
-  .btn-primary {
-    background: var(--accent); color: #fff;
-  }
-  .btn-primary:hover { background: #a63e23; }
-  .btn-outline {
-    background: transparent; color: var(--ink);
-    border: 1.5px solid var(--ink);
-  }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(31,111,92,.22); }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(31,111,92,.28); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); background: #fff; }
 
-  /* --- PROOF BAR --- */
-  .proof-bar {
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 2.5rem 2rem;
-    display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.15s ease both;
+  /* ---------- HERO ---------- */
+  .hero { padding: 6rem 0 4rem; animation: fadeUp .8s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .eyebrow {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-soft); padding: 0.4rem 0.85rem; border-radius: 100px; margin-bottom: 1.6rem;
   }
-  .proof-item { text-align: center; }
-  .proof-item .number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem; color: var(--accent);
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); max-width: 16ch; margin-bottom: 1.5rem; }
+  .hero .sub { font-size: 1.18rem; color: var(--muted); max-width: 60ch; margin-bottom: 2.3rem; line-height: 1.62; }
+  .cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; align-items: center; }
+  .flex-link {
+    font-size: 0.9rem; font-weight: 600; color: var(--accent); text-decoration: none;
+    margin-left: 0.4rem; border-bottom: 1px solid transparent; transition: border-color .2s;
   }
-  .proof-item .label {
-    font-size: 0.78rem; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--muted); margin-top: 0.25rem;
-  }
+  .flex-link:hover { border-bottom-color: var(--accent); }
 
-  /* --- SECTIONS --- */
-  section {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
+  /* ---------- PROOF BAR ---------- */
+  .proof {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: #fff;
   }
-  section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem; letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
+  .proof-inner {
+    max-width: 1080px; margin: 0 auto; padding: 2.4rem 1.5rem;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
   }
-  section .section-sub {
-    color: var(--muted); font-size: 1.05rem;
-    margin-bottom: 3rem; max-width: 560px;
+  .proof-item { text-align: center; padding: 0 0.5rem; position: relative; }
+  .proof-item + .proof-item::before {
+    content: ""; position: absolute; left: 0; top: 12%; height: 76%; width: 1px; background: var(--line);
   }
+  .proof-num { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.9rem; color: var(--accent); line-height: 1.1; }
+  .proof-label { font-size: 0.76rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.35; }
 
-  /* --- SERVICES GRID --- */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  .service-card {
-    background: var(--card-bg);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 2rem;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-  }
-  .service-card .icon {
-    width: 40px; height: 40px;
-    background: var(--accent-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; margin-bottom: 1.25rem;
-  }
-  .service-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem; margin-bottom: 0.5rem;
-  }
-  .service-card p {
-    font-size: 0.92rem; color: var(--muted); line-height: 1.6;
+  /* ---------- SECTIONS ---------- */
+  section { padding: 5rem 0; }
+  .section-head { max-width: 60ch; margin-bottom: 3rem; }
+  .section-head h2 { font-size: clamp(1.9rem, 3.5vw, 2.5rem); margin-bottom: 0.75rem; }
+  .section-head p { color: var(--muted); font-size: 1.08rem; }
+  .kicker {
+    font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.85rem;
   }
 
-  /* --- WORK / CASE STUDIES --- */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+  /* ---------- SERVICES ---------- */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .svc {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.7rem;
+    transition: transform .22s, box-shadow .22s, border-color .22s;
   }
-  .work-card {
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--card-bg);
-    transition: transform 0.25s, box-shadow 0.25s;
+  .svc:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #d8d2c6; }
+  .svc .dot {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;
   }
-  .work-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  .svc h3 { font-size: 1.18rem; margin-bottom: 0.5rem; }
+  .svc p { font-size: 0.93rem; color: var(--muted); line-height: 1.6; }
+  .svc.quiet { background: transparent; border-style: dashed; }
+  .svc.quiet .dot { background: var(--sand); color: var(--muted); }
+  .svc-feature {
+    background: var(--accent-soft); border: 1px solid #cfe2da; border-radius: 14px;
+    padding: 1.7rem 1.9rem; margin-bottom: 1.25rem;
+    display: flex; gap: 1.3rem; align-items: flex-start;
   }
-  .work-card .tag-bar {
-    padding: 1rem 1.5rem 0;
-  }
-  .tag {
-    display: inline-block;
-    font-size: 0.7rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--accent); background: var(--accent-light);
-    padding: 0.25rem 0.65rem; border-radius: 3px;
-  }
-  .work-card .body {
-    padding: 1rem 1.5rem 1.75rem;
-  }
-  .work-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem; margin-bottom: 0.5rem;
-  }
-  .work-card h3 a,
-  .work-card p a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .work-card h3 a:hover,
-  .work-card p a:hover { color: #a63e23; }
-  .work-card .project-link {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .work-card .project-link:hover { color: #a63e23; }
-  .work-card p {
-    font-size: 0.88rem; color: var(--muted); line-height: 1.6;
-  }
-  .work-card .result {
-    margin-top: 0.75rem;
-    font-size: 0.85rem; font-weight: 600;
-    color: var(--ink);
-  }
+  .svc-feature .dot { background: var(--accent); color: #fff; flex-shrink: 0; }
+  .svc-feature h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+  .svc-feature p { font-size: 0.97rem; color: #2c3036; line-height: 1.62; max-width: 72ch; }
 
-  /* --- ABOUT --- */
-  .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+  /* ---------- CASE STUDIES ---------- */
+  #work { background: linear-gradient(180deg, #fff 0%, var(--bg) 100%); border-top: 1px solid var(--line); }
+  .feature {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 2.4rem; margin-bottom: 1.5rem; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 2.5rem; align-items: start;
   }
-  .about-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
-  .tools-list {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+  .feature .left .tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft); padding: 0.3rem 0.7rem; border-radius: 6px; margin-bottom: 1rem;
   }
-  .tool-tag {
-    font-size: 0.78rem; font-weight: 500;
-    padding: 0.35rem 0.85rem;
-    border: 1px solid var(--rule);
-    border-radius: 3px;
-    color: var(--muted);
+  .feature .left h3 { font-size: 1.6rem; line-height: 1.15; margin-bottom: 1rem; }
+  .client-pill {
+    display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 100px; padding: 0.35rem 0.85rem;
   }
+  .pwb { margin-bottom: 1.3rem; }
+  .pwb:last-child { margin-bottom: 0; }
+  .pwb .lab {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted-soft); margin-bottom: 0.3rem;
+  }
+  .pwb p { font-size: 0.97rem; color: #2c3036; line-height: 1.6; }
+  .pwb.result p { color: var(--accent-dark); font-weight: 600; }
+  .result-box {
+    border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0;
+    padding: 0.85rem 1.1rem;
+  }
+  .result-box .lab { color: var(--accent); }
+  .result-box p { color: var(--accent-dark); font-weight: 600; font-size: 0.95rem; }
 
-  /* --- CTA --- */
-  .cta-section {
-    text-align: center;
-    padding: 5rem 2rem;
-    border-top: 1px solid var(--rule);
+  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 0.25rem; }
+  .case {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.7rem;
+    transition: transform .22s, box-shadow .22s, border-color .22s;
   }
-  .cta-section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem; margin-bottom: 1rem;
+  .case:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #d8d2c6; }
+  .case .tag {
+    display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.7rem;
   }
-  .cta-section p {
-    color: var(--muted); font-size: 1.05rem;
-    max-width: 480px; margin: 0 auto 2rem;
-  }
+  .case h3 { font-size: 1.22rem; margin-bottom: 0.5rem; }
+  .case .client-pill { margin-bottom: 0.9rem; }
+  .case p { font-size: 0.9rem; color: var(--muted); line-height: 1.58; }
+  .case .res { margin-top: 0.85rem; font-size: 0.88rem; font-weight: 600; color: var(--accent-dark); }
+  .case a.inline { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .case a.inline:hover { text-decoration: underline; }
 
-  /* --- FOOTER --- */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    border-top: 1px solid var(--rule);
+  /* ---------- ALSO BUILT ---------- */
+  .also { margin-top: 2.5rem; }
+  .also .lab { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-soft); margin-bottom: 0.9rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .chip {
+    font-size: 0.82rem; color: #3a3f45; background: #fff; border: 1px solid var(--line);
+    padding: 0.45rem 0.85rem; border-radius: 8px;
   }
+  .chip a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .chip a:hover { text-decoration: underline; }
+
+  /* ---------- ABOUT ---------- */
+  #about { border-top: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; align-items: start; }
+  .about-grid p { color: #3a3f45; font-size: 1rem; margin-bottom: 1.1rem; line-height: 1.7; }
+  .panel-lab { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-soft); margin-bottom: 0.9rem; }
+  .tools { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .tool { font-size: 0.78rem; color: var(--muted); border: 1px solid var(--line); border-radius: 7px; padding: 0.32rem 0.7rem; background: #fff; }
+  .recog { margin-top: 1.8rem; font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { background: var(--ink); color: #fff; text-align: center; padding: 5.5rem 1.5rem; }
+  .contact h2 { color: #fff; font-size: clamp(2rem, 4vw, 2.7rem); margin-bottom: 1rem; }
+  .contact p { color: #b6bcc4; font-size: 1.1rem; max-width: 48ch; margin: 0 auto 2.2rem; }
+  .contact .btn-primary { background: var(--accent); }
+  .contact .btn-primary:hover { background: #2a8a73; }
+  .contact .links { margin-top: 1.4rem; }
+  .contact .links a { color: #cdd3da; text-decoration: none; font-size: 0.92rem; font-weight: 500; margin: 0 0.6rem; }
+  .contact .links a:hover { color: #fff; }
+
+  /* ---------- FOOTER ---------- */
+  footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; color: var(--muted); }
   footer a { color: var(--accent); text-decoration: none; }
 
-  /* --- RESPONSIVE --- */
-  @media (max-width: 700px) {
-    nav ul { gap: 1.2rem; }
-    .proof-bar { gap: 2rem; }
-    .about-content { grid-template-columns: 1fr; }
-    section { padding: 3.5rem 1.5rem; }
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .feature { grid-template-columns: 1fr; gap: 1.6rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .proof-inner { grid-template-columns: repeat(3, 1fr); gap: 1.6rem 1rem; }
+    .proof-item:nth-child(4)::before, .proof-item:nth-child(1)::before { display: none; }
   }
-  @media (max-width: 480px) {
-    nav { padding: 0.85rem 1.25rem; }
+  @media (max-width: 680px) {
     nav ul { display: none; }
-    .hero { padding: 7rem 1.25rem 4rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .proof-inner { grid-template-columns: repeat(2, 1fr); }
+    .proof-item::before { display: none !important; }
+    section { padding: 3.5rem 0; }
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .feature { padding: 1.7rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Devin <span></span>Oommen</div>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="cv.html">CV</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a href="#top" class="logo">Oommen <span class="amp">&amp;</span> <span class="co">Company</span></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Case Studies</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:devin@oommen.org" class="nav-cta">Book a call</a></li>
+    </ul>
+  </div>
 </nav>
 
+<a id="top"></a>
+
 <!-- HERO -->
-<div class="hero">
-  <div class="eyebrow">Data Science · Statistical Modeling · Real-Time ML Systems · Public-Interest Analytics — Chicago, IL</div>
-  <h1>Your data is an asset.<br>Let's make it act like one.</h1>
-  <p>Data scientist who builds end-to-end — from PDF scraping and ETL pipelines to deployed ML systems and production web applications. Graduate-level coursework in econometrics, computational statistics, and Bayesian reasoning. Ships real things: <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">6.4M-row campaign finance platform</a> in production, real-time Whisper-powered police scanner with async architecture, interactive crime mapping in a live newsroom, and an honors thesis analyzing 484K Indian villages.</p>
-  <div class="cta-row">
-    <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
-    <a href="#work" class="btn btn-outline">See Past Work</a>
-    <a href="https://www.followthemoneyil.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View Follow The Money IL</a>
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Data Infrastructure · Automation · Operations — Chicago / DuPage County, IL</span>
+    <h1>I build the systems that let you stop doing things by hand.</h1>
+    <p class="sub">I'm Devin Oommen, principal of Oommen &amp; Company. I help small and mid-sized businesses turn messy, manual operations — paper counts, scattered spreadsheets, overflowing inboxes, ten systems that don't talk to each other — into software that runs itself. I clean the data, build the tool that uses it, and make sure it holds up in production.</p>
+    <div class="cta-row">
+      <a href="mailto:devin@oommen.org" class="btn btn-primary">Book a free consultation</a>
+      <a href="#work" class="btn btn-ghost">See case studies</a>
+      <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener" class="flex-link">Follow The Money IL ↗</a>
+    </div>
   </div>
-</div>
+</header>
 
 <!-- PROOF BAR -->
-<div class="proof-bar">
-  <div class="proof-item">
-    <div class="number">6.4M+</div>
-    <div class="label">Receipts Rows Ingested</div>
-  </div>
-  <div class="proof-item">
-    <div class="number">530k+</div>
-    <div class="label">D2 Totals Processed</div>
-  </div>
-  <div class="proof-item">
-    <div class="number">1.3M+</div>
-    <div class="label">Donor Analytics Rows</div>
-  </div>
-  <div class="proof-item">
-    <div class="number">2</div>
-    <div class="label">State + Federal Data Sources</div>
-  </div>
-  <div class="proof-item">
-    <div class="number">Live</div>
-    <div class="label">Production Scheduled Syncs</div>
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-item"><div class="proof-num">2 days&nbsp;→&nbsp;30 min</div><div class="proof-label">Manual prep eliminated</div></div>
+    <div class="proof-item"><div class="proof-num">30+ hrs/wk</div><div class="proof-label">Recovered from manual data work</div></div>
+    <div class="proof-item"><div class="proof-num">10 → 1</div><div class="proof-label">Disconnected systems unified</div></div>
+    <div class="proof-item"><div class="proof-num">6.4M+</div><div class="proof-label">Rows in production pipelines</div></div>
+    <div class="proof-item"><div class="proof-num">Offline-first</div><div class="proof-label">Field tools deployed to production</div></div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section id="services">
-  <h2>What I do</h2>
-  <p class="section-sub">Five core services, all built around the same idea: your data should be working for you, not the other way around.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="icon">📊</div>
-      <h3>Dashboards &amp; Reporting</h3>
-      <p>Replace the weekly scramble of pulling numbers from five different places. I build clean, automated dashboards and reports that update themselves — so you always know where things stand.</p>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Services</div>
+      <h2>What I do for businesses</h2>
+      <p>Every engagement comes down to one idea — your data and your day-to-day should work for you, not the other way around.</p>
     </div>
-    <div class="service-card">
-      <div class="icon">🧹</div>
-      <h3>Data Cleaning &amp; Analysis</h3>
-      <p>Got years of messy spreadsheets, duplicate records, or data you've never been able to make sense of? I'll clean it, structure it, and surface the patterns that matter for your decisions.</p>
+    <div class="svc-feature">
+      <div class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5 10.1 7.6 12 3z"/><path d="M19 13.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z"/></svg></div>
+      <div>
+        <h3>AI &amp; Document Intelligence</h3>
+        <p>Turn messy documents, emails, and even recorded meetings into structured data, summaries, and action items — automatically. I build practical, grounded AI tools that work off your own business data: pull the numbers out of PDFs and invoices, answer plain-English questions over your records, and turn every meeting into a clean list of decisions and to-dos. Real automation, not a chatbot gimmick.</p>
+      </div>
     </div>
-    <div class="service-card">
-      <div class="icon">🔍</div>
-      <h3>Web Scraping &amp; Data Collection</h3>
-      <p>The information you need often exists online — in PDFs, government sites, or competitor pages — but there's no download button. I build custom scrapers that collect and structure it for you automatically.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">🗳️</div>
-      <h3>Political Data &amp; Voter Targeting</h3>
-      <p>Voter file analysis, precinct-level targeting, historical performance modeling, and field strategy recommendations. Data-driven campaigns win — I help you build the infrastructure for it.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">🧪</div>
-      <h3>Simulation &amp; Causal Inference</h3>
-      <p>Need to know what's actually driving your results — not just what correlates? I build Monte Carlo simulations to stress-test assumptions and use causal inference methods to isolate real effects from noise, so you can make decisions based on evidence, not guesswork.</p>
-    </div>
-    <div class="service-card">
-      <div class="icon">🎙️</div>
-      <h3>Real-Time ML &amp; NLP</h3>
-      <p>Live audio transcription, keyword detection, and alerting systems powered by Whisper speech-to-text with quantized inference, voice activity detection, and fuzzy text matching — fully async architectures built to run in production.</p>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+        <h3>Operations &amp; Automation</h3>
+        <p>Stop doing by hand what software can do for you. Inventory counts, email workflows, scheduling, weekly reporting — I build automation that runs quietly in the background so your team stops re-keying numbers between spreadsheets.</p>
+      </div>
+      <div class="svc">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg></div>
+        <h3>Dashboards &amp; Reporting</h3>
+        <p>One clean dashboard instead of five spreadsheets and a gut feeling. Automated KPI reporting that updates itself, so you always know exactly where the business stands.</p>
+      </div>
+      <div class="svc">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <h3>Custom Internal Tools</h3>
+        <p>Software built for exactly how your business works — installable phone apps, desktop tools, manager command-centers. No bloated SaaS subscription, no forcing your process into someone else's box.</p>
+      </div>
+      <div class="svc">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+        <h3>Data Cleanup &amp; Integration</h3>
+        <p>Years of messy records, duplicate data, systems that don't talk to each other? I clean it, connect it, and turn it into one reliable source of truth you can actually make decisions from.</p>
+      </div>
+      <div class="svc">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Web Scraping &amp; Data Collection</h3>
+        <p>The data you need exists online but has no download button — competitor pricing, public records, PDFs, government sites. I build collectors that gather and structure it automatically.</p>
+      </div>
+      <div class="svc quiet">
+        <div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div>
+        <h3>Civic &amp; Public-Records Data</h3>
+        <p>Large-scale public-records pipelines, turnout and targeting models, and civic data platforms for campaigns, newsrooms, and researchers.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
-<section id="work" style="border-top: 1px solid var(--rule);">
-  <h2>Selected work</h2>
-  <p class="section-sub">A few examples of real projects and their outcomes.</p>
-  <div class="work-grid">
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Real-Time ML</span></div>
-      <div class="body">
-        <h3>DeKalb Scanner Alerts</h3>
-        <p>Real-time police scanner transcription and alerting system. Ingests live Broadcastify audio via FFmpeg, runs Whisper STT with Int8 quantization, detects critical keywords via Aho-Corasick + fuzzy matching, and pushes alerts via email/Slack/WebSocket dashboard. Fully async architecture packaged as a standalone macOS app.</p>
-        <div class="result">→ 14 modules, ~800 LOC, fully async architecture</div>
-      </div>
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Selected work</div>
+      <h2>Real engagements, and what changed</h2>
+      <p>A look at what these systems replaced and what they delivered. Client identities kept private.</p>
     </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Campaign Finance Platform</span></div>
-      <div class="body">
-        <h3>Follow The Money Illinois &nbsp;<a class="project-link" href="https://www.followthemoneyil.com" target="_blank" rel="noopener noreferrer">Live Site ↗</a></h3>
-        <p>Built a public campaign-finance platform that ingests Illinois state bulk filings + FEC federal data, powers searchable dashboards, and surfaces donor/network analytics.</p>
-        <div class="result">→ 6.4M+ receipts rows, 530k+ D2 totals, and 1.3M+ donor analytics rows; production deployment with scheduled syncs.</div>
+
+    <!-- FEATURE 1 -->
+    <article class="feature">
+      <div class="left">
+        <span class="tag">Operations &amp; Automation</span>
+        <h3>Paper inventory → a system that runs itself</h3>
+        <span class="client-pill">A multi-location specialty coffee roaster · ongoing</span>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Political Data</span></div>
-      <div class="body">
-        <h3>Voter File Targeting — COD Board Campaign</h3>
-        <p>Analyzed a 600,000-row Illinois voter file to compute precinct-level deviation from Democratic baseline. Built field targeting recommendations from the findings.</p>
-        <div class="result">→ Campaign earned 40,000+ votes</div>
+      <div class="right">
+        <div class="pwb"><div class="lab">The problem</div><p>Staff were counting inventory on paper and re-keying it by hand every single week.</p></div>
+        <div class="pwb"><div class="lab">What I built</div><p>An offline-first inventory app employees install on their phones, backed by an automated system-of-record that writes every count to both a permanent ledger and the live ordering grid — with automatic weekly rollover, one-click setup for new locations, and a manager "command center" dashboard. Plus a hardened email-automation pipeline across the company's accounts and a searchable, branded employee operations manual generated automatically from 16 source documents.</p></div>
+        <div class="pwb result"><div class="result-box"><div class="lab">The result</div><p>Paper counts replaced with a phone tap · weekly rollover fully automated · deployed to production across locations.</p></div></div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Operations Engineering</span></div>
-      <div class="body">
-        <h3>Enterprise Operations Platform — Healthcare Org</h3>
-        <p>Architected and built unified operations platform as sole technical resource (Power Apps, Dataverse, GymMaster API, VBA, Power Query) consolidating 10 discrete systems. Built ETL pipelines and KPI framework with 30+ performance metrics and automated R reporting infrastructure.</p>
-        <div class="result">→ Reduced 2 full days of manual prep to 30 minutes; eliminated 30+ hours/week of manual data collection</div>
+    </article>
+
+    <!-- FEATURE 2 -->
+    <article class="feature">
+      <div class="left">
+        <span class="tag">Operations Platform</span>
+        <h3>10 disconnected systems → one platform</h3>
+        <span class="client-pill">A multi-location medical practice</span>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Web Scraping</span></div>
-      <div class="body">
-        <h3>Election Data Pipeline — University Research</h3>
-        <p>Scraped and standardized presidential primary election data from 100+ state-party PDF documents into a single, clean, reproducible dataset for ongoing academic research.</p>
-        <div class="result">→ 100+ PDFs → 1 clean dataset</div>
+      <div class="right">
+        <div class="pwb"><div class="lab">The problem</div><p>The practice ran on 10 separate systems; prepping a single patient-day took two full days of manual work.</p></div>
+        <div class="pwb"><div class="lab">What I built</div><p>A unified operations platform consolidating scheduling, check-in, KPI tracking, and daily operating reports into one place, with ETL pipelines pulling live data straight from their practice-management software and a 30+ metric automated reporting framework.</p></div>
+        <div class="pwb result"><div class="result-box"><div class="lab">The result</div><p>2 days of manual prep → 30 minutes · ~30+ hours/week of manual data collection eliminated.</p></div></div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Data Journalism</span></div>
-      <div class="body">
-        <h3>Crime Data Scraper &amp; <a href="https://northernstar.info/121584/news/northern-star-launches-niu-pd-crime-map/" target="_blank" rel="noopener noreferrer">Interactive Map ↗</a></h3>
-        <p>Built a Python scraper to extract data from 250 PDF crime logs, then analyzed and visualized findings in an <a href="https://northernstar.info/121584/news/northern-star-launches-niu-pd-crime-map/" target="_blank" rel="noopener noreferrer">interactive R-based crime map ↗</a> for a university newsroom.</p>
-        <div class="result">→ 155% increase in daily page views</div>
+    </article>
+
+    <!-- FEATURE 3 -->
+    <article class="feature">
+      <div class="left">
+        <span class="tag">Data Platform</span>
+        <h3>A 6.4-million-row public data platform</h3>
+        <span class="client-pill">Follow The Money IL · my own project</span>
+        <div style="margin-top:1.1rem;"><a href="https://www.followthemoneyil.com" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;font-size:0.9rem;text-decoration:none;border-bottom:1px solid transparent;">Visit the live site ↗</a></div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Simulation &amp; Causal Inference</span></div>
-      <div class="body">
-        <h3>Monte Carlo Study — ANOVA Robustness</h3>
-        <p>Designed a 700-iteration Monte Carlo simulation in R to evaluate how ANOVA holds up under varying effect sizes and non-normal error distributions. Analyzed Type I error rates and statistical power across conditions.</p>
-        <div class="result">→ Quantified method reliability under real-world violations</div>
+      <div class="right">
+        <div class="pwb"><div class="lab">The problem</div><p>Illinois &amp; federal campaign-finance data is public, but nearly impossible for a normal person to actually search.</p></div>
+        <div class="pwb"><div class="lab">What I built</div><p>A production platform that ingests state bulk filings and federal FEC data on scheduled syncs and makes all of it searchable, with donor and network analytics on top.</p></div>
+        <div class="pwb result"><div class="result-box"><div class="lab">The result</div><p>6.4M+ receipt rows · 530K+ filing totals · 1.3M+ donor-analytics rows · live in production — proof I can build and run data infrastructure at serious scale.</p></div></div>
       </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Full-Stack Dashboard</span></div>
-      <div class="body">
-        <h3>Legislative Bill Stats &nbsp;<a class="project-link" href="https://congress-bill-stats.onrender.com/" target="_blank" rel="noopener noreferrer">Live App ↗</a></h3>
-        <p>Full-stack dashboard aggregating U.S. Congress and Illinois General Assembly bill activity with searchable dashboards, CSV export, and D3.js network visualizations.</p>
-        <div class="result">→ FastAPI + SQLite + Chart.js + D3.js</div>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">ETL Pipeline</span></div>
-      <div class="body">
-        <h3>COD Board of Trustees Financial Pipeline</h3>
-        <p>ETL pipeline scraping 20+ months of board meeting packets. Dual scraping architecture (Selenium for dynamic, requests for static), two PDF parsers (budget expenditures + accounts payable), 10+ regex patterns, CSV aggregation.</p>
-        <div class="result">→ Built for professor's governance research</div>
-      </div>
-    </div>
-    <div class="work-card">
-      <div class="tag-bar"><span class="tag">Honors Capstone</span></div>
-      <div class="body">
-        <h3>Electrification &amp; Welfare in Rural India</h3>
-        <p>Cross-sectional analysis of 484,630 Indian villages (12 merged datasets). MLR testing domestic, commercial, and agricultural electrification effects on consumption. R² = 0.82. 11 academic citations (JPE, World Development, Energy Economics).</p>
-        <div class="result">→ Found 1.6% welfare increase from domestic electricity access</div>
+    </article>
+
+    <!-- ALSO BUILT -->
+    <div class="also">
+      <div class="lab">Also built</div>
+      <div class="chips">
+        <span class="chip">Legislative Bill Stats — full-stack civic dashboard <a href="https://congress-bill-stats.onrender.com/" target="_blank" rel="noopener">(live ↗)</a></span>
+        <span class="chip">Board-of-trustees financial ETL pipeline for academic research</span>
+        <span class="chip">Honors thesis: statistical analysis of 484,630 villages</span>
+        <span class="chip">Monte Carlo robustness study (ANOVA)</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" style="border-top: 1px solid var(--rule);">
-  <h2>About</h2>
-  <div class="about-content">
-    <div>
-      <p>I'm Devin Oommen — a data scientist based in the Chicago area. I graduated from Northern Illinois University in 2025 with honors in Political Science, with graduate-level coursework in econometrics (OLS, 2SLS/IV, causal inference), computational statistics (MLE, Monte Carlo, bootstrap, KDE), and Bayesian reasoning.</p>
-      <p>I build end-to-end — from PDF scraping and ETL pipelines to deployed ML systems and production web applications. Recent work includes a 6.4M-row campaign finance platform, a real-time Whisper-powered police scanner with fully async architecture, interactive crime mapping in a live newsroom, and an honors thesis analyzing 484K Indian villages.</p>
-      <p>I'm especially interested in working with small businesses that know they're sitting on useful data but don't have the time or tools to do anything with it — and with political campaigns and organizations that want to make sharper, evidence-based decisions.</p>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">About</div>
+      <h2>The person behind the systems</h2>
     </div>
-    <div>
-      <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Tools &amp; Technologies</div>
-      <div class="tools-list">
-        <span class="tool-tag">Python</span>
-        <span class="tool-tag">R</span>
-        <span class="tool-tag">SQL</span>
-        <span class="tool-tag">JavaScript</span>
-        <span class="tool-tag">Bash</span>
-        <span class="tool-tag">Pandas / NumPy / SciPy</span>
-        <span class="tool-tag">Scikit-learn</span>
-        <span class="tool-tag">Flask</span>
-        <span class="tool-tag">FastAPI</span>
-        <span class="tool-tag">faster-whisper / WebRTC VAD</span>
-        <span class="tool-tag">asyncio / aiosqlite</span>
-        <span class="tool-tag">Pydantic / RapidFuzz</span>
-        <span class="tool-tag">SQLite</span>
-        <span class="tool-tag">R Shiny / Leaflet</span>
-        <span class="tool-tag">tidyverse / sf / ggplot2</span>
-        <span class="tool-tag">D3.js / Chart.js</span>
-        <span class="tool-tag">Tableau</span>
-        <span class="tool-tag">Excel / VBA</span>
-        <span class="tool-tag">Power Apps / Power Query / Dataverse</span>
-        <span class="tool-tag">XGBoost / Random Forest / Classification</span>
-        <span class="tool-tag">TF-IDF / Text Vectorization</span>
-        <span class="tool-tag">Git / GitHub</span>
-        <span class="tool-tag">AWS (EC2)</span>
-        <span class="tool-tag">Azure DevOps</span>
-        <span class="tool-tag">Jupyter</span>
-        <span class="tool-tag">Quarto / R Markdown / LaTeX</span>
-        <span class="tool-tag">BeautifulSoup / Playwright / Selenium</span>
-        <span class="tool-tag">pdfplumber / PDF Parsing</span>
-        <span class="tool-tag">FFmpeg / Real-Time Audio</span>
-        <span class="tool-tag">Data Pipelines / ETL</span>
-        <span class="tool-tag">Geocoding / Google Maps API</span>
-        <span class="tool-tag">FEC / OpenFEC APIs</span>
-        <span class="tool-tag">OLS / 2SLS/IV / Econometrics</span>
-        <span class="tool-tag">MLE / Bayesian Inference</span>
-        <span class="tool-tag">Monte Carlo / Bootstrap / KDE</span>
-        <span class="tool-tag">Causal Inference</span>
-        <span class="tool-tag">Whisper STT / NLP Pipelines</span>
-        <span class="tool-tag">Geospatial Visualization</span>
-        <span class="tool-tag">Jira</span>
+    <div class="about-grid">
+      <div>
+        <p>Oommen &amp; Company is my independent data and operations practice. I'm Devin Oommen — I build software and data infrastructure for businesses that have outgrown spreadsheets but don't need (or want) a full engineering department.</p>
+        <p>My background is unusual on purpose: graduate-level training in statistics and econometrics, years shipping production software end-to-end, and a stretch as the final QA gate on a medical device that cleared the FDA and is used in 100+ hospitals. That mix means I can clean your data, model it, build the tool that uses it, and make sure it actually holds up once real people depend on it.</p>
+        <p>I keep my client list short on purpose. My anchor engagement is an ongoing partnership with a multi-location specialty coffee roaster, and I take on a few additional clients at a time — mostly around Chicago and DuPage County. If you're sitting on manual processes or data you can't use, let's talk.</p>
       </div>
-      <div style="margin-top:2rem;">
-        <div style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem;">Recognition</div>
-        <p style="font-size:0.88rem; color:var(--muted);">MPSA Conference Presenter · ICPA News Story of the Year · ICCJA Reporter of the Year · Peters Scholarship for Public Service · Jim Killam Mentor Award · Roy G. Campbell "Best Damn Reporter" Award · Mortar Board Honor Society</p>
+      <div>
+        <div class="panel-lab">Tools &amp; technologies</div>
+        <div class="tools">
+          <span class="tool">Python</span><span class="tool">R</span><span class="tool">SQL</span><span class="tool">JavaScript</span>
+          <span class="tool">pandas / NumPy</span><span class="tool">scikit-learn / LightGBM</span><span class="tool">FastAPI / Flask</span>
+          <span class="tool">Power Apps / Power Query / Dataverse</span><span class="tool">Google Apps Script</span><span class="tool">SQLite</span>
+          <span class="tool">ETL pipelines</span><span class="tool">Playwright / Selenium / BeautifulSoup</span><span class="tool">PDF parsing</span>
+          <span class="tool">Whisper STT</span><span class="tool">Geospatial / Leaflet</span><span class="tool">Tableau</span><span class="tool">AWS / Azure</span><span class="tool">Git</span>
+        </div>
+        <div class="recog">Graduate-level econometrics &amp; computational statistics · MPSA conference presenter · FDA/EU device QA · multiple journalism &amp; public-service awards.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-section" id="contact">
-  <h2>Let's talk about your data.</h2>
-  <p>Free 15-minute consultation. No pitch, no pressure — just an honest look at whether I can help.</p>
-  <a href="mailto:devin.oommen@gmail.com" class="btn btn-primary">Email Me</a>
-  <div style="margin-top:1rem;">
-    <a href="https://linkedin.com/in/devinoommen" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">LinkedIn ↗</a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="https://github.com/Doommen3" target="_blank" rel="noopener noreferrer" style="color:var(--accent); font-size:0.9rem; text-decoration:none;">GitHub ↗</a>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Let's talk about your operations.</h2>
+  <p>Free 30-minute consultation. No pitch, no pressure — just an honest look at whether I can help.</p>
+  <a href="mailto:devin@oommen.org" class="btn btn-primary">Email me</a>
+  <div style="margin-top:1.3rem; font-size:1.05rem; color:#cdd3da;">or call / text <a href="tel:+16304566784" style="color:#fff; font-weight:600; text-decoration:none;">630-456-6784</a></div>
+  <div class="links">
+    <a href="https://linkedin.com/in/devinoommen" target="_blank" rel="noopener">LinkedIn ↗</a> ·
+    <a href="https://github.com/Doommen3" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
-</div>
+</section>
 
 <footer>
-  © 2026 Devin Oommen · Chicago, IL · <a href="mailto:devin.oommen@gmail.com">devin.oommen@gmail.com</a>
+  © 2026 Oommen &amp; Company · Chicago / DuPage County, IL · <a href="mailto:devin@oommen.org">devin@oommen.org</a> · <a href="tel:+16304566784">630-456-6784</a>
 </footer>
 
 </body>
