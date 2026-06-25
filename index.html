@@ -231,6 +231,45 @@
   .contact .links a { color: #cdd3da; text-decoration: none; font-size: 0.92rem; font-weight: 500; margin: 0 0.6rem; }
   .contact .links a:hover { color: #fff; }
 
+  /* ---------- CONTACT FORM ---------- */
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .form-card {
+    background: #fff; color: var(--ink); border-radius: 16px; padding: 2rem;
+    margin: 2.2rem 0 0; text-align: left; box-shadow: 0 24px 60px rgba(0,0,0,.3);
+  }
+  .form-row { margin-bottom: 1rem; }
+  .form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-card label { display: block; font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 0.35rem; }
+  .form-card label .opt { font-weight: 400; color: #9ca3af; }
+  .form-card input, .form-card select, .form-card textarea {
+    width: 100%; padding: 0.7rem 0.85rem; font-size: 0.95rem; font-family: inherit; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 9px; background: #fbfaf8;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  .form-card input:focus, .form-card select:focus, .form-card textarea:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(31,111,92,.15); background: #fff;
+  }
+  .form-card textarea { min-height: 100px; resize: vertical; }
+  .form-card .btn-primary { width: 100%; justify-content: center; margin-top: 0.4rem; }
+  .form-card .btn-primary:disabled { opacity: .65; cursor: default; }
+  .form-card .form-note { font-size: 0.78rem; color: var(--muted); margin: 0.85rem 0 0; text-align: center; }
+  #form-error { font-size: 0.85rem; color: #b91c1c; margin-top: 0.7rem; text-align: center; }
+  #form-error a { color: #b91c1c; }
+  #form-success { text-align: center; padding: 0.5rem 0; }
+  .success-check {
+    width: 54px; height: 54px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.7rem; font-weight: 700; margin: 0 auto 1rem;
+  }
+  #form-success h3 { font-size: 1.45rem; margin-bottom: 0.5rem; color: var(--ink); }
+  #form-success p { color: #4b5563; font-size: 0.98rem; max-width: none; margin: 0 auto; }
+  #form-success .book-prompt { margin: 1.3rem 0 0.7rem; font-weight: 600; color: var(--ink); }
+  #book-btn { width: auto; }
+  .success-alt { margin-top: 1.4rem !important; font-size: 0.85rem !important; color: var(--muted) !important; }
+  .success-alt a { color: var(--accent); text-decoration: none; }
+  .contact-alt { margin-top: 1.7rem; font-size: 0.95rem; color: #b6bcc4; }
+  .contact-alt a { color: #fff; text-decoration: none; font-weight: 500; }
+  .contact-alt a:hover { text-decoration: underline; }
+
   /* ---------- FOOTER ---------- */
   footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; color: var(--muted); }
   footer a { color: var(--accent); text-decoration: none; }
@@ -252,6 +291,8 @@
     section { padding: 3.5rem 0; }
     .hero { padding: 3.5rem 0 2.5rem; }
     .feature { padding: 1.7rem; }
+    .form-row.two { grid-template-columns: 1fr; }
+    .form-card { padding: 1.5rem; }
   }
 </style>
 </head>
@@ -264,7 +305,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Case Studies</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="mailto:devin@oommen.org" class="nav-cta">Book a call</a></li>
+      <li><a href="#contact" class="nav-cta">Book a call</a></li>
     </ul>
   </div>
 </nav>
@@ -278,7 +319,7 @@
     <h1>I build the systems that let you stop doing things by hand.</h1>
     <p class="sub">I'm Devin Oommen, principal of Oommen &amp; Company. I help small and mid-sized businesses turn messy, manual operations — paper counts, scattered spreadsheets, overflowing inboxes, ten systems that don't talk to each other — into software that runs itself. I clean the data, build the tool that uses it, and make sure it holds up in production.</p>
     <div class="cta-row">
-      <a href="mailto:devin@oommen.org" class="btn btn-primary">Book a free consultation</a>
+      <a href="#contact" class="btn btn-primary">Book a free consultation</a>
       <a href="#work" class="btn btn-ghost">See case studies</a>
       <a href="https://www.followthemoneyil.com" target="_blank" rel="noopener" class="flex-link">Follow The Money IL ↗</a>
     </div>
@@ -441,19 +482,134 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2>Let's talk about your operations.</h2>
-  <p>Free 30-minute consultation. No pitch, no pressure — just an honest look at whether I can help.</p>
-  <a href="mailto:devin@oommen.org" class="btn btn-primary">Email me</a>
-  <div style="margin-top:1.3rem; font-size:1.05rem; color:#cdd3da;">or call / text <a href="tel:+16304566784" style="color:#fff; font-weight:600; text-decoration:none;">630-456-6784</a></div>
-  <div class="links">
-    <a href="https://linkedin.com/in/devinoommen" target="_blank" rel="noopener">LinkedIn ↗</a> ·
-    <a href="https://github.com/Doommen3" target="_blank" rel="noopener">GitHub ↗</a>
+  <div class="contact-inner">
+    <h2>Let's talk about your operations.</h2>
+    <p>Tell me your biggest pain point and I'll tell you honestly whether I can help — free 30-minute consultation, no pitch, no pressure.</p>
+
+    <div class="form-card">
+      <form id="lead-form">
+        <input type="hidden" name="_subject" value="New inquiry — oommen.org">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;">
+
+        <div class="form-row two">
+          <div>
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div>
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@business.com">
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="f-industry">Industry</label>
+            <select id="f-industry" name="industry" required>
+              <option value="" disabled selected>Select one…</option>
+              <option>Retail / e-commerce</option>
+              <option>Food &amp; beverage / hospitality</option>
+              <option>Healthcare / medical</option>
+              <option>Professional services</option>
+              <option>Trades / construction</option>
+              <option>Real estate</option>
+              <option>Nonprofit / civic</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(630) 555-0123">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="f-pain">What's your biggest operational pain point right now?</label>
+          <textarea id="f-pain" name="pain_point" required placeholder="e.g. We re-key inventory by hand every week · our reports take two days to pull · our systems don't talk to each other…"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">Send &amp; see next steps</button>
+        <div id="form-error" hidden>Hmm, that didn't send. Please email me directly at <a href="mailto:devin@oommen.org">devin@oommen.org</a>.</div>
+        <p class="form-note">No spam, ever — your details come straight to me.</p>
+      </form>
+
+      <div id="form-success" hidden>
+        <div class="success-check">✓</div>
+        <h3>Thanks, <span id="success-name">there</span> — got it.</h3>
+        <p>I'll read what you sent and get back to you personally, usually within a day.</p>
+        <div id="book-block" hidden>
+          <p class="book-prompt">Want to grab a time sooner?</p>
+          <a id="book-btn" class="btn btn-primary" href="#" target="_blank" rel="noopener">Book a time now ↗</a>
+        </div>
+        <p class="success-alt">Or reach me directly: <a href="mailto:devin@oommen.org">devin@oommen.org</a> · <a href="tel:+16304566784">630-456-6784</a></p>
+      </div>
+    </div>
+
+    <p class="contact-alt">Prefer email? <a href="mailto:devin@oommen.org">devin@oommen.org</a> · call or text <a href="tel:+16304566784">630-456-6784</a></p>
+
+    <div class="links">
+      <a href="https://linkedin.com/in/devinoommen" target="_blank" rel="noopener">LinkedIn ↗</a> ·
+      <a href="https://github.com/Doommen3" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
   </div>
 </section>
 
 <footer>
   © 2026 Oommen &amp; Company · Chicago / DuPage County, IL · <a href="mailto:devin@oommen.org">devin@oommen.org</a> · <a href="tel:+16304566784">630-456-6784</a>
 </footer>
+
+<script>
+  (function () {
+    // ── Booking link ──────────────────────────────────────────────────────────
+    // Paste your Calendly / Cal.com / scheduling URL between the quotes below to
+    // show a "Book a time now" button on the success screen. Leave it empty ("")
+    // and the button stays hidden — submissions still email you either way.
+    var BOOKING_URL = "";
+    // ──────────────────────────────────────────────────────────────────────────
+
+    var form = document.getElementById('lead-form');
+    if (!form) return;
+    var submitBtn = document.getElementById('submit-btn');
+    var errorBox = document.getElementById('form-error');
+    var successBox = document.getElementById('form-success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.disabled = true;
+      var label = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+
+      var data = {};
+      new FormData(form).forEach(function (value, key) { data[key] = value; });
+
+      fetch('https://formsubmit.co/ajax/devin@oommen.org', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) { if (!res.ok) throw new Error('bad status'); return res.json().catch(function () { return {}; }); })
+        .then(function () {
+          var first = (data.name || '').trim().split(/\s+/)[0];
+          document.getElementById('success-name').textContent = first || 'there';
+          if (BOOKING_URL) {
+            document.getElementById('book-btn').href = BOOKING_URL;
+            document.getElementById('book-block').hidden = false;
+          }
+          form.hidden = true;
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = label;
+          errorBox.hidden = false;
+        });
+    });
+  })();
+</script>
 
 </body>
 </html>
