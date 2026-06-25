@@ -585,13 +585,25 @@
       var data = {};
       new FormData(form).forEach(function (value, key) { data[key] = value; });
 
+      var controller = new AbortController();
+      var timeoutId = setTimeout(function () { controller.abort(); }, 15000);
+
       fetch('https://formsubmit.co/ajax/devin@oommen.org', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        signal: controller.signal
       })
-        .then(function (res) { if (!res.ok) throw new Error('bad status'); return res.json().catch(function () { return {}; }); })
-        .then(function () {
+        .then(function (res) {
+          if (!res.ok) throw new Error('Server returned ' + res.status + ' ' + res.statusText);
+          return res.json().then(null, function (parseErr) {
+            throw new Error('Invalid response from server (not JSON): ' + parseErr.message);
+          });
+        })
+        .then(function (body) {
+          if (body.success !== undefined && String(body.success) !== 'true') {
+            throw new Error('Submission rejected: ' + (body.message || 'unknown reason'));
+          }
           var first = (data.name || '').trim().split(/\s+/)[0];
           document.getElementById('success-name').textContent = first || 'there';
           if (BOOKING_URL) {
@@ -602,11 +614,13 @@
           successBox.hidden = false;
           successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         })
-        .catch(function () {
+        .catch(function (err) {
+          console.error('[lead-form] Submission failed:', err);
           submitBtn.disabled = false;
           submitBtn.textContent = label;
           errorBox.hidden = false;
-        });
+        })
+        .finally(function () { clearTimeout(timeoutId); });
     });
   })();
 </script>
