@@ -568,55 +568,12 @@
   © 2026 Oommen &amp; Company · Chicago / DuPage County, IL · <a href="mailto:devin@oommen.org">devin@oommen.org</a> · <a href="tel:+16304566784">630-456-6784</a>
 </footer>
 
+<script src="js/contact-form.js"></script>
 <script>
-  (function () {
-    // ── Booking link ──────────────────────────────────────────────────────────
-    // Paste your Calendly / Cal.com / scheduling URL between the quotes below to
-    // show a "Book a time now" button on the success screen. Leave it empty ("")
-    // and the button stays hidden — submissions still email you either way.
-    var BOOKING_URL = "https://calendly.com/devin-oommen/30min";
-    // ──────────────────────────────────────────────────────────────────────────
-
-    var form = document.getElementById('lead-form');
-    if (!form) return;
-    var submitBtn = document.getElementById('submit-btn');
-    var errorBox = document.getElementById('form-error');
-    var successBox = document.getElementById('form-success');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      errorBox.hidden = true;
-      submitBtn.disabled = true;
-      var label = submitBtn.textContent;
-      submitBtn.textContent = 'Sending…';
-
-      var data = {};
-      new FormData(form).forEach(function (value, key) { data[key] = value; });
-
-      fetch('https://formsubmit.co/ajax/devin@oommen.org', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      })
-        .then(function (res) { if (!res.ok) throw new Error('bad status'); return res.json().catch(function () { return {}; }); })
-        .then(function () {
-          var first = (data.name || '').trim().split(/\s+/)[0];
-          document.getElementById('success-name').textContent = first || 'there';
-          if (BOOKING_URL) {
-            document.getElementById('book-btn').href = BOOKING_URL;
-            document.getElementById('book-block').hidden = false;
-          }
-          form.hidden = true;
-          successBox.hidden = false;
-          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        })
-        .catch(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = label;
-          errorBox.hidden = false;
-        });
-    });
-  })();
+  initContactForm({
+    bookingUrl: "https://calendly.com/devin-oommen/30min",
+    submitEndpoint: "https://formsubmit.co/ajax/devin@oommen.org"
+  });
 </script>
 
 </body>
