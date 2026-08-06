@@ -1,0 +1,61 @@
+/* ================================================================
+   shared.css — reset, base typography, animation, and common
+   component styles used by both index.html and cv.html.
+
+   Each page defines its own :root palette so var(--bg), var(--ink),
+   var(--accent), var(--muted), var(--line), etc. resolve to the
+   correct page-specific values.
+   ================================================================ */
+
+/* ---------- RESET ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+
+/* ---------- ANIMATION ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- NAV (shared structure) ---------- */
+nav {
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+}
+nav .logo {
+  text-decoration: none;
+  color: var(--ink);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+nav ul a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav ul a:hover { color: var(--ink); }
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--muted);
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
